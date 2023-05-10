@@ -1,0 +1,125 @@
+﻿@model List<UserOrdersListViewModel>
+@{
+    Layout = "_menu";
+    ViewData["Title"] = "Orders";
+}
+
+<!DOCTYPE HTML>
+<head>
+    <title>Orders</title>
+
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="~/css/style userOrdersPage.css">
+    <script src="~/js/js userOrdersPage.js" defer></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/css/styles.css">
+
+    <script src="~/js/javascript.js" defer></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class = "user-orders-page">
+        <div class = "user-orders-page-wrapper">
+          <div class="user-orders-title">
+            <span>Меню оператора</span>
+            <div class = "search-forms">
+                <form class = "search-email-form" method="POST">
+                    <input type="text" name="" id="" placeholder="Введіть пошту покупця">
+                    <button type = "submit">OK</button>
+                </form>
+            </div>
+          </div>
+          <div class="user-orders-content">
+            <div class="user-orders-headers">
+                <table class="user-orders-table-headers">
+                    <tr class = "table-headers">
+                        <th class = "table-column table-header-1">ID</th>
+                        <th class = "table-column table-header-2">Статус</th>
+                        <th class = "table-column table-header-3">Покупець</th>
+                        <th class = "table-column table-header-4">Ігри</th>
+                        <th class = "table-column table-header-5">Пошта покупця</th>
+                        <th class = "table-column table-header-6">Загальна ціна</th>
+                        <th class = "table-column table-header-7">Дата створення</th>
+                        <th class = "table-column table-header-8">Оператор</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="user-orders-list-orders">
+                <table class="user-orders-table-content">
+                        @{
+                            int index = 0;
+                            foreach(var userOrder in Model)
+                            {
+                                var temp = new List<(string, string, double, int)>();
+
+                                <tr class="table-content digital">
+                                    <td class="table-column table-header-1 table-content">#@userOrder.order.Id</td>
+                                    <td class="table-column table-header-2 table-content">@userOrder.order.Status</td>
+                                    @if(!String.IsNullOrEmpty(userOrder.userCustomer.Surname))
+                                    {
+                                        <td class="table-column table-header-3 table-content">@userOrder.userCustomer.Name @userOrder.userCustomer.Surname</td>
+                                    } else
+                                    {
+                                        <td class="table-column table-header-3 table-content">@userOrder.userCustomer.Name</td>
+                                    }
+
+                                    <td class="table-column table-header-4 table-content tooltip-button-@index" >
+                                        <button title="Переглянути ігри"></button><span class="tooltip" style="visibility: hidden">
+                                            @{
+                                                foreach(var copy in userOrder.gamePlatformPrice)
+                                                {
+                                                    if (temp.Contains(copy)) continue;
+                                                    temp.Add(copy);
+                                                    <span>@copy.Item4 x @copy.Item1 (@copy.Item2) - @copy.Item4 x @copy.Item3₴ (@(copy.Item4 * copy.Item3)₴)</span>
+                                                    <br/>
+                                                }
+                                            }
+                                        </span>
+                                    </td>
+                                    <td class="table-column table-header-5 table-content">@userOrder.userCustomer.Email</td>
+                                    <td class="table-column table-header-6 table-content">@userOrder.order.price₴</td>
+                                    <td class="table-column table-header-7 table-content" title="@userOrder.order.createdTime">@userOrder.order.createdTime.Substring(0,10)</td>
+                                    @if(userOrder.userOperator != null)
+                                    {
+                                        <td class="table-column table-header-8 table-content" title="@userOrder.userOperator.Email">@userOrder.userOperator.Name @userOrder.userOperator.Surname</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="table-column table-header-8 table-content"> - </td>
+                                    }
+                                    <td style="display:none">
+                                        <script>
+                                            /*<![CDATA[*/
+                                            window['digital-tooltip-button-' + @index.ToString()] = document.querySelector(".digital .tooltip-button-" + @index.ToString());
+                                            window['digital-tooltip-' + @index.ToString()] = document.querySelector(".digital .tooltip-button-" + @index.ToString() + " .tooltip");
+
+                                            window['digital-tooltip-button-' + @index.ToString()].addEventListener("click", function () {
+                                                if (window['digital-tooltip-' + @index.ToString()].style.visibility === "hidden") {
+                                                    window['digital-tooltip-' + @index.ToString()].style.visibility = "visible";
+                                                } else {
+                                                    window['digital-tooltip-' + @index.ToString()].style.visibility = "hidden";
+                                                }
+                                            });
+                                            /*]]>*/
+                                        </script>
+                                    </td>
+                                </tr>
+                                index++;
+                            }
+                        }
+                </table>
+            </div>
+          </div>
+        </div>
+    </div>    
+    <footer class="footer">
+        <span class="footer-credentials">
+            Copyright © 2023 CatGames. Всі права захищені.
+        </span>
+    </footer>
+    
+</body>
+</html>

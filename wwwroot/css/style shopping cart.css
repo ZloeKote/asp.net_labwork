@@ -1,0 +1,241 @@
+:root {
+    --background-color-main: #605F5F;
+    --background-color-shopping-cart: #2C2828;
+    --background-color-nav: rgba(44, 40, 40);
+    --background-color-nav-hover: #605F5F;
+    --background-delete-button: #91C791;
+    --border-color-shopping-cart: #605F5F;
+    --footer-text-color: #000000;
+    --nav-text-color: #ffff;
+    --nav-text-color-hover: #78D578;
+    --background-button-find: #78D578;
+    --background-button-find-hover: #a9e9a9;
+    --background-button-find-active: #7FAF7F;
+    --background-color-row-hover: #959494;
+    --color-text-shopping-cart: #fff;
+    --color-text-button: black;
+}
+
+body {
+    margin: 0;
+    font-family: Times, Times New Roman, serif !important;
+}
+
+body::before {
+    content: "";
+    background-image: url('../img/background-image.webp');
+    background-size:cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.50;
+    z-index: -1;
+}
+
+.shopping-cart {
+    display: flex;
+    justify-content: center;
+}
+
+.shopping-cart-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 840px;
+    margin-top: 30px;
+}
+
+.shopping-cart-title {
+    display: flex;
+    align-items: center;
+    width:100%;
+    height: 10%;
+    background-color: var(--background-color-shopping-cart);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    border: 3px solid var(--border-color-shopping-cart);
+    /*box-shadow: 5px 5px 5px var(--border-color-shopping-cart);*/
+}
+
+.shopping-cart-title span {
+    font-size: 48px;
+    color: var(--color-text-shopping-cart);
+    margin-left: 60px;
+}
+
+.shopping-cart-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90%;
+    background-color: var(--background-color-shopping-cart);
+    border-radius: 20px;
+    border: 3px solid var(--border-color-shopping-cart);
+    /*box-shadow: 5px 5px 5px var(--border-color-shopping-cart);*/
+}
+
+.shopping-cart-headers {
+    width: 100%;
+    height: 10%;
+    border-bottom: 2px solid var(--border-color-shopping-cart);
+    /*background-color: var(--border-color-shopping-cart);*/
+}
+
+.table-header-1 {
+    width: 44%;
+}
+.table-header-2 {
+    width: 14%;
+}
+.table-header-3 {
+    width: 11%;
+}
+.table-header-4 {
+    width: 11%;
+}
+.table-header-4 input {
+    outline: none;
+    border: none;
+    width: 50%;
+    color: var(--color-text-shopping-cart);
+    background-color: var(--background-color-shopping-cart);
+    border: 1px solid var(--background-color-row-hover);
+    height: 25px;
+    font-size: 18px;
+}
+
+.table-header-5 {
+    width: 11%;
+}
+.table-header-6 {
+    width: 7%;
+}
+
+.shopping-cart-table-content tr {
+    height: 50px;
+}
+
+.table-header-4 input:invalid {
+    border: 1px solid red;
+}
+
+.table-header-6 button {
+    width: 100%;
+    height: 48px;
+    border: none;
+    outline: none;
+    background-color: var(--background-color-shopping-cart);
+    color: var(--color-text-shopping-cart);
+    font-size: 18px;
+} 
+
+.shopping-cart-table-content tr:hover .table-header-1,
+.shopping-cart-table-content tr:hover .table-header-2,
+.shopping-cart-table-content tr:hover .table-header-3,
+.shopping-cart-table-content tr:hover .table-header-4,
+.shopping-cart-table-content tr:hover .table-header-5{
+    background-color: var(--background-color-row-hover);
+}
+
+.table-header-6 button:hover{
+    background-color: var(--background-delete-button);
+}
+
+.table-header-6 button:active {
+    background-color: var(--background-button-find);
+}
+
+.table-row-content td:not(.table-header-1) {
+    text-align: center;
+}
+
+.shopping-cart-list-games {
+    width: 100%;
+    height: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+.shopping-cart-table-headers, .shopping-cart-table-content {
+    width: 100%;
+    font-size: 22px;
+    color: var(--color-text-shopping-cart);
+}
+
+.shopping-cart-table-headers {
+    height: 100%;
+    font-size: 24px;
+}
+
+.shopping-cart-table-content{
+    border: none;
+    border-spacing: 0;
+}
+
+.shopping-cart-list-games::-webkit-scrollbar {
+    border: 5px;
+    background-color: var(--background-color-shopping-cart);
+}
+
+.shopping-cart-list-games::-webkit-scrollbar-thumb {
+    background-color: var(--background-color-row-hover);
+}
+
+.table-headers {
+    text-align: center;
+}
+
+.shopping-cart-total {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    border-top: 2px solid var(--border-color-shopping-cart);
+    /*background-color: var(--border-color-shopping-cart);*/
+    border-radius: 0 0 20px 20px;
+    color: var(--color-text-shopping-cart);
+    font-size: 48px;
+}
+
+.shopping-cart-buy-button {
+    display: flex;
+    align-items: center;
+}
+
+.shopping-cart-buy-button form {
+	display: flex;
+	align-items: center;
+}
+
+.shopping-cart-buy-button button {
+    font-size: 26px;
+    color: var(--color-text-button);
+    background-color: var(--background-button-find);
+    height: 53px;
+    font-weight: bold;
+    margin: 0 20px 0 20px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+}
+
+.shopping-cart-buy-button button:hover {
+    background-color: var(--background-button-find-hover);
+}
+
+.shopping-cart-buy-button button:active {
+    background-color: var(--background-button-find-active);
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: var(--footer-text-color);
+    font-weight: bold;
+}

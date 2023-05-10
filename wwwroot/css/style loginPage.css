@@ -1,0 +1,198 @@
+:root {
+    --background-color-main: #605F5F;
+    --background-color-start: #2C2828;
+    --background-color-button: #605F5F;
+    --background-color-button-hover: #888787;
+    --background-color-button-active: #484747;
+    --footer-text-color: #000000;
+    --nav-text-color: #ffff;
+    --color-text-start: #fff;
+    --color-text-button: black;
+    --background-color-nav: rgba(44, 40, 40);
+    --background-color-nav-hover: #605F5F;
+    --nav-text-color-hover: #78D578;
+    --background-button-find: #78D578;
+    --background-button-find-hover: #a9e9a9;
+    --background-button-find-active: #7FAF7F;
+    --background-color-menu-list-games: #888787;
+}
+
+body {
+    margin: 0;
+    font-family: Times, Times New Roman, serif !important;
+}
+
+body::before {
+    content: "";
+    background-image: url('../img/Screenshot_1.png');
+    background-size: 65%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.40;
+    z-index: -1;
+}
+
+.start-page {
+    height: 900px;
+}
+
+.start-page-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    margin-top: 20px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-left: 5%;
+    font-family: Tahoma;
+}
+
+.under-logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo img {
+    width: 500px;
+    height: auto;
+}
+
+.logo .logo-text-title {
+    font-size: 128px;
+    line-height: 100px;
+}
+
+.logo .logo-text-quote {
+    font-size: 48px;
+    line-height: 2;
+}
+
+.log-in-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 500px;
+    border-radius: 30px;
+    background-color: var(--background-color-start);
+    margin-right: 5%;
+}
+
+.log-in-text {
+    color: var(--color-text-start);
+    font-size: 64px;
+}
+
+.log-in-button.customer {
+    margin-top: 29px;
+}
+
+.log-in-button.customer span {
+    display:flex;
+    margin-left: 10px;
+}
+
+.log-in-button.customer i {
+    background-image: url('../img/shopping-bag.png');
+    background-size: 48px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 48px;
+}
+
+.log-in-button.operator span {
+    display:flex;
+    margin-left: 10px;
+}
+
+.log-in-button.operator i {
+    background-image: url('../img/phone.png');
+    background-size: 48px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 48px;
+}
+
+.log-in-button.courier span {
+    display:flex;
+    margin-left: 10px;
+}
+
+.log-in-button.courier span span {
+    margin-left: 40px;
+}
+
+.log-in-button.courier i {
+    background-image: url('../img/Truck.png');
+    background-size: 48px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 48px;
+}
+
+.log-in-button {
+    width: 364px;
+    height: 93px;
+    background-color: var(--background-color-button);
+    border: 0;
+    outline: 0;
+    border-radius: 50px;
+    font-size: 48px;
+    color: var(--nav-text-color);
+    font-weight: 700;
+    margin-top: 78px;
+}
+
+.log-in-button:hover {
+    cursor: pointer;
+    background-color: var(--background-color-button-hover);
+}
+
+.log-in-button:active {
+    background-color: var(--background-color-button-active);
+}
+
+.log-in-button span{
+    display: flex;
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: var(--footer-text-color);
+    font-weight: bold;
+}
+
+#account {
+    color: white;
+    width:50%;
+}
+
+.log-in-text {
+
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.control-label {
+    font-size: 24px;
+}
+
+.reg-label {
+    font-size: 20px;
+}

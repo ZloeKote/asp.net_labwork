@@ -1,0 +1,63 @@
+﻿@model GamesListViewModel
+@{
+    Layout = "_menu";
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Корзина</title>
+
+    <meta charset="UTF-8"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+       
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/css/style shopping cart.css">
+    <script src="~/js/js shopping cart.js" defer></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class = "shopping-cart">
+        <div class = "shopping-cart-wrapper">
+            <div class="shopping-cart-title">
+                <span>Корзина</span>
+            </div>
+            <div class="shopping-cart-content">
+                <div class="shopping-cart-headers">
+                    <table class="shopping-cart-table-headers">
+                        <tr class = "table-headers">
+                            <th class = "table-column table-header-1">Назва</th>
+                            <th class = "table-column table-header-2">Платформа</th>
+                            <th class = "table-column table-header-3">Ціна за гру</th>
+                            <th class = "table-column table-header-4">Кількість</th>
+                            <th class = "table-column table-header-5">Загальна ціна</th>
+                            <th class = "table-column table-header-6"></th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="shopping-cart-list-games">
+                </div>
+                <div class="shopping-cart-total">
+                    <div class="shopping-cart-total-price">
+                        <span class="total-price-title" id = "total-price">Загальна ціна:</span>
+                        <span class="total-price-price">0₴</span>
+                    </div>
+                    <div class="shopping-cart-buy-button">
+                        <form action="/Basket/Checkout" method="GET"><button id = "buy-button">Оформити замовлення</button></form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <footer class="footer">
+        <span class="footer-credentials">
+            Copyright © 2023 CatGames. Всі права захищені.
+        </span>
+    </footer>
+    
+</body>
+</html>

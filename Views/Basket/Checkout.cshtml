@@ -1,0 +1,103 @@
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<LabWork.Data.Models.User> signInManager
+@model UserOrderCheckoutModel
+@{
+    Layout = "_menu";
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Замовлення</title>
+
+    <meta charset="UTF-8"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+       
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/css/style DigitalOrderForm.css">
+    <script src="~/js/js digitalOrderForm.js" defer></script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+   <th:block th:include = "/_menu"></th:block>
+    <div class = "order-form">
+        <div class = "order-form-wrapper">
+           <div class="order-form-title"><span>Оформлення замовлення</span></div>
+           <div class="order-form-form">
+            <div class="form-info">
+                <div class="user-info">
+                    <div class="user-info-title"><span>Інформація про вас</span></div>
+                    <div class="user-info-form">
+                        <form name = "filled_order" id = "orderform">
+                            <div class="form-user-info">
+                                <div class="form-name">
+                                    <label asp-for="name" class="label-form">Ім'я<span style="color:red" title="Обов'язкове поле">*</span></label>
+                                    @if(Model.name != null) {
+                                        <input type="text" asp-for="name" value="@Model.name" id="user-name" pattern = "[A-Za-zА-Яа-яґҐЁёІіЇїЄє'’ʼ-]{2,60}" placeholder = "Введіть ім'я" title = "Ім'я не повинно містити зайвих знаків та цифр!" required />
+                                    } else {
+                                        <input type="text" asp-for="name" id="user-name" pattern = "[A-Za-zА-Яа-яґҐЁёІіЇїЄє'’ʼ-]{2,60}" placeholder = "Введіть ім'я" title = "Ім'я не повинно містити зайвих знаків та цифр!" required />
+                                    }
+                                    
+                                </div>
+                                <div class="form-surname">
+                                    <label asp-for="surname" class="label-form">Прізвище</label>
+                                    @if(Model.surname != null) {
+                                        <input type="text" asp-for="surname" value="@Model.surname" id="user-surname" pattern="[A-Za-zА-Яа-яґҐЁёІіЇїЄє'’ʼ-]{2,60}" placeholder="Введіть прізвище" title="Прізвище не повинно містити зайвих знаків та цифр!" />
+                                    } else {
+                                        <input type="text" asp-for="surname" id="user-surname" pattern="[A-Za-zА-Яа-яґҐЁёІіЇїЄє'’ʼ-]{2,60}" placeholder="Введіть прізвище" title="Прізвище не повинно містити зайвих знаків та цифр!" />
+                                    }
+                                    
+                                </div>
+                            </div>   
+                            <div class = "form-email">  
+	                            <div class="form-email-wrapper">
+                                    <label asp-for="email" class="label-form">Пошта<span style="color:red" title="Обов'язкове поле">*</span></label>
+                                        @if (signInManager.IsSignedIn(User))
+                                        {
+                                            <input type="email" value="@User.Identity.Name" asp-for="email" id="user-email" pattern="[^\s]+[^\s]+\.[^\s]+" placeholder="Введіть пошту" title="Електронна пошта повинна бути у форматі назва@назва.назва. Наприклад, illia.kotenko@nure.ua" required />
+                                        } else
+                                        {
+                                            <input type="email" asp-for="email" id="user-email" pattern="[^\s]+[^\s]+\.[^\s]+" placeholder="Введіть пошту" title="Електронна пошта повинна бути у форматі назва@назва.назва. Наприклад, illia.kotenko@nure.ua" required />
+                                        }
+                                        
+	                            </div>         
+	                        </div>
+                            <input asp-for="total_price" type="hidden" id="total_price_input"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="price-total">
+                <div class="total-price">
+                    <div class="split-prices">
+                        <span class = "product-price-title">Товари</span>
+                    </div>
+                    <div class="general-price">
+                        <span class = "total-price-title">Загальна ціна: </span>
+                        <span class = "price">0₴</span>
+                    </div>
+                    
+                </div>
+            </div>
+           </div>
+           <div class="order-form-total">
+           		<div class = "order-form-total-wrapper">
+		            <form action="">
+		                <button form="orderform" type="submit" class = "buy-button">Створити замовлення</button>
+		            </form>
+		            <form action = "/Basket/List"><button type="submit" class = "back-button">Повернутися</button></form>
+           		</div>
+           </div>
+        </div>
+    </div>    
+    <footer class="footer">
+        <span class="footer-credentials">
+            Copyright © 2023 CatGames. Всі права захищені.
+        </span>
+    </footer>
+</body>
+</html>

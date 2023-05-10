@@ -1,0 +1,816 @@
+:root {
+    --background-color-main: #605F5F;
+    --background-color-list-games: #2C2828;
+    --background-color-nav: rgba(44, 40, 40);
+    --background-color-nav-hover: #605F5F;
+    --border-color-list-games: #605F5F;
+    --footer-text-color: #000000;
+    --nav-text-color: #ffff;
+    --nav-text-color-hover: #78D578;
+    --list-games-color-filter-text: #ffff;
+    --background-button-find: #78D578;
+    --background-button-find-hover: #a9e9a9;
+    --background-button-find-active: #7FAF7F;
+    --background-color-menu-list-games: #888787;
+}
+
+body {
+    margin: 0;
+    font-family: Times, Times New Roman, serif !important;
+}
+
+body::before {
+    content: "";
+    background-image: url('../img/screenshot_1.png');
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.50;
+    z-index: -1;
+}
+
+.popover {
+    max-width: 1000px;
+}
+
+.popover-body {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+}
+
+.popover-body img {
+    width: 400px;
+    margin-right: 2px;
+}
+
+.popover-body div.content-popover-img {
+    border-right: 1px solid rgba(0,0,0,.1);
+    margin-right: 2px;
+}
+
+.popover-body hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.list-games {
+    display: flex;
+    justify-content: center;
+}
+
+.list-games-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    width: 80%;
+    height: 840px;
+    background-color: var(--background-color-list-games);
+    border: 3px solid var(--border-color-list-games);
+    border-radius: 10px;
+}
+
+.sort-games {
+    display: flex;
+    width: 100%;
+    height: 5%;
+    border-right: 1px solid var(--border-color-list-games);
+}
+
+.sort-games {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-activated {
+    margin: 5px 10px 0 15px;
+    font-size: 26px;
+    color: var(--list-games-color-filter-text);
+}
+
+.sort-games .sort-by {
+    margin-right: 15px;
+}
+
+.sort-by .sort-by-title {
+    font-size: 26px;
+    color: var(--list-games-color-filter-text);
+}
+
+.sort-by .sort-by-price-button {
+    margin: 5px 0 0 15px;
+    font-size: 20px;
+    font-weight: bold;
+    height: 30px;
+    width: 100px;
+    background-color: var(--background-button-find);
+    border: none;
+    color: rgba(0,0,0,0.7);
+    outline: 0 !important;
+}
+
+.sort-by .sort-by-price-button:hover {
+    background-color: var(--background-button-find-hover);
+    cursor: pointer;
+}
+
+.filter-games {
+    display: flex;
+    flex-direction: column;
+    width: 17%;
+    height: 100%;
+    border-right: 1px solid var(--border-color-list-games);
+}
+
+/* ФІЛЬТР ЖАНР */
+
+.filter-genre {
+    display: flex;
+    flex-direction: column;
+    height: 5%;
+    width: 100%;    
+    border-bottom: 1px solid var(--border-color-list-games);
+}
+
+.filter-genre select {
+	height: 100%;
+	background-color: var(--background-color-list-games);
+	padding-left: 20px;
+	color: var(--list-games-color-filter-text);
+	font-size: 26px;
+	border: 0;
+	outline: 0;
+}
+
+.filter-genre button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    font-size: 26px;
+    color: var(--list-games-color-filter-text);
+    padding-left: 20px;
+    background-color: var(--background-color-list-games);
+    border: none;
+    outline: none;
+}
+
+.filter-genre button span {
+    font-size: 20px;
+    color: var(--list-games-color-filter-text);
+    margin-right: 15px;
+}
+
+.filter-genre ul li button {
+    width: 100%;
+    font-size: 22px;
+    padding: 0;
+    background-color: var(--background-color-menu-list-games);
+}
+
+.filter-genre ul {
+    display: none;
+    position: absolute;  
+    padding: 0;
+    margin-top: 2.1%;
+    width: 13.45%;
+    height: auto;
+    font-size: 24px;
+    list-style: none;
+    color: var(--list-games-color-filter-text);
+    max-height: 200px;
+    overflow-y: auto;
+    border-bottom: 1px solid var(--border-color-list-games);
+    border-radius: 5px;
+}
+
+.filter-genre button:hover, .filter-genre li:hover {
+    background-color: var(--border-color-list-games);
+    cursor: pointer;
+}
+
+.filter-genre ul::-webkit-scrollbar {
+    border: 5px;
+    background-color: var(--background-color-list-games);
+}
+
+.filter-genre ul::-webkit-scrollbar-thumb {
+    
+    background-color: var(--border-color-list-games);
+}
+
+/* ФІЛЬТР ЦІНА */
+
+.filter-price {
+    display: flex;
+    flex-direction: column;
+    height: 5%;
+    border-bottom: 1px solid var(--border-color-list-games);
+}
+
+.filter-price .filter-price-title-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    font-size: 26px;
+    color: var(--list-games-color-filter-text);
+    padding-left: 23px;
+    background-color: var(--background-color-list-games);
+    border: none;
+    outline: none;
+}
+
+.filter-price .filter-price-title-button span {
+    font-size: 20px;
+    color: var(--list-games-color-filter-text);
+    margin-right: 15px;
+}
+
+.filter-price .filter-price-title-button:hover {
+    background-color: var(--border-color-list-games);
+    cursor: pointer;
+}
+
+.filter-price form span {
+    color: var(--list-games-color-filter-text);
+    font-size: 22px;
+    margin: 0 10px 0 10px;
+}
+
+.filter-price form {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 13.45%;
+    margin-top: 2.2%;
+    height: 40px;
+    border-bottom: 1px solid var(--border-color-list-games);
+    background-color: var(--border-color-list-games);
+}
+
+.filter-price input {
+    width: 30%;
+    height: 25px;
+    border: none;
+    border-radius: 10px;
+}
+
+.filter-price-button {
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 8%;
+    height: 24px;
+    width: 40px;
+    background-color: var(--background-button-find);
+    border: none;
+    color: rgba(0,0,0,0.7);
+    border-radius: 5px;
+    outline: 0 !important;
+}
+
+.filter-price form button:hover {
+    background-color: var(--background-button-find-hover);
+    cursor: pointer;
+}
+
+.filter-min-price, .filter-max-price {
+	outline: 0;
+}
+
+.filter-min-price::-webkit-outer-spin-button,
+.filter-min-price::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.filter-max-price::-webkit-outer-spin-button,
+.filter-max-price::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ФІЛЬТР ПЛАТФОРМА */
+
+.filter-platform {
+    display: flex;
+    flex-direction: column;
+    height: 5%;
+    width: 100%;    
+    border-bottom: 1px solid var(--border-color-list-games);
+}
+
+.filter-platform select {
+	height: 100%;
+	background-color: var(--background-color-list-games);
+	padding-left: 20px;
+	color: var(--list-games-color-filter-text);
+	font-size: 26px;
+	border: 0;
+	outline: 0;
+}
+
+.filter-platform button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    font-size: 26px;
+    color: var(--list-games-color-filter-text);
+    padding-left: 20px;
+    background-color: var(--background-color-list-games);
+    border: none;
+    outline: none;
+}
+
+.filter-platform button span {
+    font-size: 20px;
+    color: var(--list-games-color-filter-text);
+    margin-right: 15px;
+}
+
+.filter-platform ul li button {
+    width: 100%;
+    font-size: 22px;
+    padding: 0;
+    background-color: var(--background-color-menu-list-games);
+}
+
+.filter-platform ul {
+    display: none;
+    position: absolute;  
+    padding: 0;
+    margin-top: 2.15%;
+    width: 13.45%;
+    height: auto;
+    font-size: 24px;
+    list-style: none;
+    color: var(--list-games-color-filter-text);
+    max-height: 200px;
+    overflow-y: auto;
+    border-bottom: 1px solid var(--border-color-list-games);
+    border-radius: 5px;
+}
+
+.filter-platform button:hover, .filter-platform li:hover {
+    background-color: var(--border-color-list-games);
+    cursor: pointer;
+}
+
+.filter-platform ul::-webkit-scrollbar {
+    border: 5px;
+    background-color: var(--background-color-list-games);
+}
+
+.filter-platform ul::-webkit-scrollbar-thumb {
+    background-color: var(--border-color-list-games);
+}
+
+/* ФІЛЬТР СИСТЕМА */
+
+.filter-system {
+    display: flex;
+    flex-direction: column;
+    height: 5%;
+    width: 100%;    
+    border-bottom: 1px solid var(--border-color-list-games);
+}
+
+.filter-system select {
+	height: 100%;
+	background-color: var(--background-color-list-games);
+	padding-left: 20px;
+	color: var(--list-games-color-filter-text);
+	font-size: 26px;
+	border: 0;
+	outline: 0;
+}
+
+.filter-system button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    font-size: 26px;
+    color: var(--list-games-color-filter-text);
+    padding-left: 20px;
+    background-color: var(--background-color-list-games);
+    border: none;
+    outline: none;
+}
+
+.filter-system button span {
+    font-size: 20px;
+    color: var(--list-games-color-filter-text);
+    margin-right: 15px;
+}
+
+.filter-system ul li button {
+    width: 100%;
+    font-size: 22px;
+    padding: 0;
+    background-color: var(--background-color-menu-list-games);
+}
+
+.filter-system ul {
+    display: none;
+    position: absolute;  
+    padding: 0;
+    margin-top: 2.15%;
+    width: 13.45%;
+    height: auto;
+    font-size: 24px;
+    list-style: none;
+    color: var(--list-games-color-filter-text);
+    max-height: 200px;
+    overflow-y: auto;
+    border-bottom: 1px solid var(--border-color-list-games);
+    border-radius: 5px;
+}
+
+.filter-system button:hover, .filter-system li:hover {
+    background-color: var(--border-color-list-games);
+    cursor: pointer;
+}
+
+.filter-system ul::-webkit-scrollbar {
+    border: 5px;
+    background-color: var(--background-color-list-games);
+}
+
+.filter-system ul::-webkit-scrollbar-thumb {
+    background-color: var(--border-color-list-games);
+}
+
+/* ФІЛЬТР РОЗРОБНИК */
+
+.filter-developer {
+    display: flex;
+    flex-direction: column;
+    height: 5%;
+    width: 100%;    
+    border-bottom: 1px solid var(--border-color-list-games);
+}
+
+.filter-developer select {
+	height: 100%;
+	background-color: var(--background-color-list-games);
+	padding-left: 20px;
+	color: var(--list-games-color-filter-text);
+	font-size: 26px;
+	border: 0;
+	outline: 0;
+}
+
+.filter-developer button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    font-size: 26px;
+    color: var(--list-games-color-filter-text);
+    padding-left: 20px;
+    background-color: var(--background-color-list-games);
+    border: none;
+    outline: none;
+}
+
+.filter-developer button span {
+    font-size: 20px;
+    color: var(--list-games-color-filter-text);
+    margin-right: 15px;
+}
+
+.filter-developer ul li button {
+    width: 100%;
+    font-size: 22px;
+    padding: 0;
+    background-color: var(--background-color-menu-list-games);
+}
+
+.filter-developer ul {
+    display: none;
+    position: absolute;  
+    padding: 0;
+    margin-top: 2.15%;
+    width: 13.45%;
+    height: auto;
+    font-size: 24px;
+    list-style: none;
+    color: var(--list-games-color-filter-text);
+    max-height: 200px;
+    overflow-y: auto;
+    border-bottom: 1px solid var(--border-color-list-games);
+    border-radius: 5px;
+}
+
+.filter-developer button:hover, .filter-developer li:hover {
+    background-color: var(--border-color-list-games);
+    cursor: pointer;
+}
+
+.filter-developer ul::-webkit-scrollbar {
+    border: 5px;
+    background-color: var(--background-color-list-games);
+}
+
+.filter-developer ul::-webkit-scrollbar-thumb {
+    background-color: var(--border-color-list-games);
+}
+
+/* ЖАНР ВИДАВЕЦЬ */
+
+.filter-publisher {
+    display: flex;
+    flex-direction: column;
+    height: 5%;
+    width: 100%;    
+    border-bottom: 1px solid var(--border-color-list-games);
+}
+
+.filter-publisher select {
+	height: 100%;
+	background-color: var(--background-color-list-games);
+	padding-left: 20px;
+	color: var(--list-games-color-filter-text);
+	font-size: 26px;
+	border: 0;
+	outline: 0;
+}
+
+.filter-publisher button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    font-size: 26px;
+    color: var(--list-games-color-filter-text);
+    padding-left: 20px;
+    background-color: var(--background-color-list-games);
+    border: none;
+    outline: none;
+}
+
+.filter-publisher button span {
+    font-size: 20px;
+    color: var(--list-games-color-filter-text);
+    margin-right: 15px;
+}
+
+.filter-publisher ul li button {
+    width: 100%;
+    font-size: 22px;
+    padding: 0;
+    background-color: var(--background-color-menu-list-games);
+}
+
+.filter-publisher ul {
+    display: none;
+    position: absolute;  
+    padding: 0;
+    margin-top: 2.2%;
+    width: 13.45%;
+    height: auto;
+    font-size: 24px;
+    list-style: none;
+    color: var(--list-games-color-filter-text);
+    max-height: 200px;
+    overflow-y: auto;
+    border-bottom: 1px solid var(--border-color-list-games);
+    border-radius: 5px;
+}
+
+.filter-publisher button:hover, .filter-platform li:hover {
+    background-color: var(--border-color-list-games);
+    cursor: pointer;
+}
+
+.filter-publisher ul::-webkit-scrollbar {
+    border: 5px;
+    background-color: var(--background-color-list-games);
+}
+
+.filter-publisher ul::-webkit-scrollbar-thumb {
+    background-color: var(--border-color-list-games);
+}
+
+.accept-filter-button {
+	background-color: var(--background-button-find);
+	border-radius: 20px;
+	border: 0;
+	outline: 0;
+	height: 45px;
+	width: 50%;
+	align-self: end;
+	margin: 10px 10px 0 0;
+}
+
+.accept-filter-button:hover {
+	background-color: var(--background-button-find-hover);
+	cursor:pointer;
+}
+
+.accept-filter-button:active {
+	background-color: var(--background-button-find-active);
+	outline: 0;
+}
+
+.games-and-filter {
+    display: flex;
+    width: 100%;
+    height: 95%
+}
+
+.sort-games {
+    width: 100%;
+    height: 5%;
+    border-bottom: 1px solid var(--border-color-list-games);
+}
+
+.games {
+    display: flex;
+    flex-direction: column;
+    width: 83%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.game-1 {
+    display: flex;
+    height: 5%;
+    border-bottom: 1px solid var(--border-color-list-games);
+}
+
+
+.game-platform-system select{
+    width: 150px;
+    height: 100%;
+    font-size: 22px;
+    background-color: var(--background-color-list-games);
+    color: var(--list-games-color-filter-text);
+}
+
+.game-system {
+    display: none;
+}
+
+.game-name-price-buy {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 32px;
+    color: var(--list-games-color-filter-text);
+}
+
+.game-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 750px;
+}
+
+.game-name-title {
+    padding-left: 20px;
+    position: relative;
+    bottom: 5px;
+    
+}
+
+.game-name-title-edition {
+	position: relative;
+	bottom: 5px;
+}
+
+.btn-details-wrapper {
+    display: flex;
+    align-items: flex-end;
+}
+
+.btn-details:focus {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+.btn-info:hover {
+    background-color: #138496 !important;
+    border-color: #117a8b !important;
+}
+
+.game-price {
+    display: flex;
+    justify-content: flex-end;
+    width: 150px;
+}
+
+.game-price-span {
+    position: relative;
+    bottom: 5px;
+    margin-right: 20px;
+    
+}
+
+.game-name .tooltip {
+    visibility: hidden;
+    width: max-content;
+    width: -moz-max-content;
+    width: -webkit-max-content;
+    max-width: 600px;
+    font-size: 16px;
+    background-color: var(--background-color-menu-list-games);
+    color: #fff;
+    padding: 5px;
+    border: 1px solid var(--border-color-list-games);
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    opacity: 100;
+    line-height: 1.2;
+}
+
+.game-name:hover .tooltip {
+    visibility: visible;
+}
+
+.game-buy form {
+	width: 90px;
+	height: 98%;
+}
+
+.game-buy-button {
+    width: 90px;
+    height: 98%;
+    position: relative;
+    bottom: 16px;
+    border: none;
+    background: url('../img/buy-basket_img.png');
+    background-repeat: no-repeat;
+    background-size: 40px;
+    background-position: center;
+    background-color: var(--background-button-find);
+    outline: 0 !important;
+}
+
+.game-buy-button:hover {
+    background-color: var(--background-button-find-hover);
+    cursor: pointer;
+}
+
+.game-buy-button:active {
+	background-color: var(--background-button-find-active);
+}
+
+.game-platform-system {
+    display: flex;
+}
+
+.game-name-price-buy {
+    display: flex;
+}
+
+.game-price-buy {
+    display: flex;
+}
+
+.chosen-type-copy-digital-img {
+    background-image: url('../img/digital_copy_img(white).png');
+    background-size: 35px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 40px;
+    height: 35px;
+    justify-content: center;
+    margin: 0 auto 0 auto;
+}
+
+.chosen-type-copy-physical-img {
+    background-image: url('../img/physical_copy_img(white).png');
+    background-size: 35px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 40px;
+    height: 35px;
+    margin: 0 auto 0 auto;
+}
+
+.game-buy-img {
+    background-image: url('../img/buy-basket_img.png');
+    background-size: 35px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 40px;
+    height: 35px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: var(--footer-text-color);
+    font-weight: bold;
+}

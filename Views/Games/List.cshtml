@@ -1,0 +1,176 @@
+﻿@model GamesListViewModel
+@{
+    Layout = "_menu";
+    ViewData["Title"] = "CatGames";
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>CatGames</title>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type ="text/css" media="screen"/>
+    <link rel="stylesheet" href="~/css/styles.css">
+    <script src="~/js/javascript.js" defer></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>  
+</head>
+
+<body>
+    <div class="list-games">
+        <div class="list-games-wrapper">
+            <div class="sort-games">
+                <div class="filter-activated">
+                    <span class="filter-activated-title">Фільтр: </span>
+                </div>
+                <div class="sort-by">
+                    <span class="sort-by-title">Сортування за</span>
+                    <button type="submit" onclick="sort_price_change_arrow();" class="sort-by-price-button" form="filter-form">Ціна<span class="sort-by-price-arrow"></span></button>
+                    <input class="input-for-sort" style="display: none" type="text" form="filter-form">
+                </div>
+            </div>
+            <div class="games-and-filter">
+                <div class="filter-games">
+                    <div class="filter-genre">
+                        <select form = "filter-form"> 
+                            <option value = "">Жанр гри</option>
+                            <option value = ""> </option>
+                        </select>
+                    </div>
+                    <div class="filter-price">
+                        <button onclick="oc_form_price();" class = "filter-price-title-button">Ціна<span class = "filter-price-arrow">▼</span></button>
+                        <form method = "POST" id = "filter-form" class = "filter-price-form">
+                            <span>від</span>
+                            <input type="number" class="filter-min-price">
+                            <span>до</span>
+                            <input type="number" class="filter-max-price">
+                        </form>
+                    </div>
+                    <div class="filter-platform">
+                        <select form = "filter-form"> 
+                            <option value = "">Платформа</option>
+                            <option value=""> </option>
+                        </select>
+                    </div>
+                    <div class="filter-system">
+                        <select form = "filter-form"> 
+                            <option value = "">Система</option>
+                            <option value=""> </option>
+                        </select>
+                    </div>
+                    <div class="filter-developer">
+                        <select form = "filter-form"> 
+                            <option value = "">Розробник</option>
+                            <option value=""> </option>
+                        </select>
+                    </div>
+                    <div class="filter-publisher">
+                        <select form = "filter-form"> 
+                            <option value = "">Видавець</option>
+                            <option value=""> </option>
+                        </select>
+                    </div>
+                    <button class = "accept-filter-button" form = "filter-form" type = "submit">Застосувати</button>
+                </div>
+                <div class="games">
+                    @{
+                        int index = 0;
+                        foreach(var game in Model.allGames)
+                        {
+                            <div class="game-1">
+                                <div class="game-platform-system">
+                                    <div class="game-platform" id="platform-@index.ToString()">
+                                        <select name="" class="choose-platform" id="game-platform-select-@index.ToString()">
+                                            @{
+                                                foreach(var copy in game.digitalCopies)
+                                                {
+                                                    <option value="@copy.platform"><button class="choose-platform-button">@copy.platform</button></option>
+                                                }
+                                        }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="game-name-price-buy">
+                                    <div class="game-name">
+                                        <a class="game-name-title" title="@game.name">@game.name</a>
+                                        <!-- тут был tooltip -->
+                                        <div id="game-details-popover" style="display: none;">
+                                            <img class="game-cover" src="@game.cover_img_path" alt="game cover">
+                                            <span class="genre">@game.genres</span>
+                                            
+                                            <span class="release-date">@game.releaseDate</span>
+                                            <span class="developer">@game.developers</span>
+                                            
+                                            <br>
+                                            <span class="publisher">@game.publishers</span>
+                                            @if (game.description != null)
+                                            {
+                                                <span class="description">@game.description</span>
+                                            }
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="game-price-buy">
+                                        <div class="btn-details-wrapper">
+                                            <button class="btn btn-sm btn-info btn-details" id="btn-details-@index">Детальніше</button>
+                                        </div>
+
+                                        <div class="game-price"><span class="game-price-span" id="game-price-@index.ToString()">₴</span></div>
+                                        <div class="game-buy"><button onclick="pass_game_to_basket('@game.id', '@game.name', null, '@game.genres', '@game.developers', '@game.publishers', @game.releaseDate, @index)" class="game-buy-button" type="submit"><i class="game-buy-img"></i></button></div>
+                                    </div>
+                                </div>
+                                <script>
+                                        window['select-platform' + '@index.ToString()'] = document.getElementById('game-platform-select-' + '@index.ToString()');
+                                        window['game_price' + '@index.ToString()'] = document.getElementById('game-price-' + '@index.ToString()');
+                                        window['digital_copies' + '@index.ToString()'] = JSON.parse('@Html.Raw(Json.Serialize(game.digitalCopies))');
+                                        window['btn-details' + '@index.ToString()'] = document.getElementById('btn-details-' + '@index.ToString()');
+
+                                        window['game_price' + '@index.ToString()'].textContent = window['digital_copies' + '@index.ToString()'][0].price + '₴';
+
+                                        window['select-platform' + '@index.ToString()'].onchange = function () {
+                                            for (let i in window['digital_copies' + '@index.ToString()']) {
+                                                if (window['select-platform' + '@index.ToString()'].value === window['digital_copies' + '@index.ToString()'][i].platform) {
+                                                    window['game_price' + '@index.ToString()'].textContent = window['digital_copies' + '@index.ToString()'][i].price + '₴';
+                                                    break;
+                                                }
+                                            }
+                                        };
+
+                                        window['btn-details' + '@index.ToString()'].onclick = function() {
+                                            if (window['btn-details' + '@index.ToString()'].classList.contains('btn-details-activated')) {
+                                                window['btn-details' + '@index.ToString()'].style.backgroundColor = '#17a2b8';
+                                                window['btn-details' + '@index.ToString()'].style.borderColor = '#17a2b8';
+                                                window['btn-details' + '@index.ToString()'].classList.remove('btn-details-activated');
+                                            }
+                                            else {
+                                                window['btn-details' + '@index.ToString()'].style.backgroundColor = '#0E6573';
+                                                window['btn-details' + '@index.ToString()'].style.borderColor = '#0E6573';
+                                                window['btn-details' + '@index.ToString()'].classList.add('btn-details-activated');
+                                            }
+                                        };
+                                </script>
+                            </div>
+                            index++;
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <span class="footer-credentials">
+            Copyright © 2023 CatGames. Всі права захищені.
+        </span>
+    </footer>
+    <script>
+        var popover0 = popover0 || {};
+        popover0.viewModel = {
+            gameModel: '@Model'
+        };
+    </script>
+</body>
+</html>

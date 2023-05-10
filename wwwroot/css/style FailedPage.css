@@ -1,0 +1,104 @@
+:root {
+    --background-color-main: #605F5F;
+    --background-color-failed: #2C2828;
+    --background-color-nav: rgba(44, 40, 40);
+    --background-color-nav-hover: #605F5F;
+    --border-color-failed: #605F5F;
+    --footer-text-color: #000000;
+    --nav-text-color: #ffff;
+    --nav-text-color-hover: #78D578;
+    --background-button-find: #78D578;
+    --background-button-find-hover: red;
+    --background-button-find-active: #7FAF7F;
+    --background-color-row-hover: #959494;
+    --color-text-failed: #fff;
+    --color-text-button: black;
+    --background-color-back: rgb(243, 60, 60);
+    --background-color-back-active: rgb(255, 0, 0);
+}
+
+body {
+    margin: 0;
+    font-family: Times, Times New Roman, serif !important;
+}
+
+body::before {
+    content: "";
+    background-image: url('../img/background-image.webp');
+    background-size:cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.50;
+    z-index: -1;
+}
+
+.success-page {
+    display: flex;
+    justify-content: center;
+}
+
+.success-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    width: 60%;
+    height: 500px;
+    background-color: var(--background-color-failed);
+    border-radius: 20px;
+    border: 3px solid var(--border-color-failed);
+}
+
+#happy-cat-img {
+    height: 300px;
+    width:fit-content;
+}
+
+.success-text {
+    display:flex;
+    flex-direction: column;
+    font-size: 24px;
+    text-align: center;
+    color: var(--color-text-failed);
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.back-button button {
+    height: 75px;
+    border-radius: 50px;
+    border: 3px solid var(--background-button-find-hover);
+    background-color: var(--background-color-failed);
+    color: var(--color-text-failed);
+    font-size: 20px;
+    
+    
+}
+
+.back-button button:hover {
+	transition-duration: 0.5s;
+	transition-property: var(--border-color-failed);
+    background-color: var(--border-color-failed);
+    cursor: pointer;
+}
+
+.back-button button:active {
+    background-color: var(--background-color-row-hover);
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: var(--footer-text-color);
+    font-weight: bold;
+}

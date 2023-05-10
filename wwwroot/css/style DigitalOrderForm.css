@@ -1,0 +1,258 @@
+:root {
+    --background-color-main: #605F5F;
+    --background-color-order-form: #2C2828;
+    --background-color-nav: rgba(44, 40, 40);
+    --background-color-nav-hover: #605F5F;
+    --border-color-order-form: #605F5F;
+    --footer-text-color: #000000;
+    --nav-text-color: #ffff;
+    --nav-text-color-hover: #78D578;
+    --background-button-find: #78D578;
+    --background-button-find-hover: #a9e9a9;
+    --background-button-find-active: #7FAF7F;
+    --background-color-row-hover: #959494;
+    --color-text-order-form: #fff;
+    --color-text-button: black;
+    --background-color-form: #6096B4;
+    --background-color-back: rgb(243, 60, 60);
+    --background-color-back-active: rgb(255, 0, 0);
+}
+
+body {
+    margin: 0;
+    font-family: Times, Times New Roman, serif !important;
+}
+
+body::before {
+    content: "";
+    background-image: url('../img/background-image.webp');
+    background-size:cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.50;
+    z-index: -1;
+}
+
+.order-form {
+    display: flex;
+    justify-content: center;
+}
+
+.order-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    width: 80%;
+    height: 500px;
+    background: url(/img/order-wallpaper-form.jpg) !important;
+    
+    border-radius: 20px;
+    border: 3px solid var(--border-color-order-form);
+}
+
+.order-form-title {
+    width: 100%;
+    height: 13%;
+    border-bottom: 1px solid var(--border-color-order-form);
+}
+
+.order-form-title span {
+    font-size: 38px;
+    color: var(--color-text-order-form);
+    margin-left: 20px;
+}
+
+.order-form-form {
+    display: flex;
+    width: 100%;
+    height: 83%;
+    background-color: var(--background-color-form);
+}
+
+.order-form-total {
+    width: 100%;
+    height: 20%;
+    background-color: var(--background-color-form);
+    border-radius: 0 0 15px 15px;
+}
+
+.form-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.label-form {
+    color: white;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.user-info-title {
+    margin-top: 1%;
+    border: 3px solid var(--border-color-order-form);
+    border-radius: 90px;
+    height: 18%;
+    width: 95%;
+    background-color: var(--background-color-order-form);
+}
+
+.user-info-title span {
+    font-size: 32px;
+    color: var(--color-text-order-form);
+    margin-left: 20px;
+}
+
+.user-info-form {
+    font-size: 24px;
+    height: 100%;
+}
+
+.user-info-form form {
+    width: 100%;
+    height: 100%;
+}
+
+.form-user-info {
+    display: flex;
+    width: 700px;
+    height: 50%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.form-name, .form-surname, .form-email-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-email {
+	display: flex;
+    width: 700px;
+    height: 30%;	
+}
+
+.form-email-wrapper {
+	margin-left: 25px;
+}
+
+.form-name input, .form-surname input, .form-email input {
+    height: 45px;
+    width: 300px;
+    border-radius: 15px;
+    margin-top: 5px;
+    border: 2px solid var(--border-color-order-form);
+    font-size: 24px;
+}
+.form-name input:focus, .form-surname input:focus, .form-email input:focus{
+    outline: 2px solid var(--background-button-find-hover);
+}
+
+.product-price-title {
+    text-align: center !important;
+    font-size: 30px;
+}
+
+.item-info {
+    font-size: 17px;
+    margin-left: 10px;
+}
+
+.price-total {
+    width: 90%;
+    height: 100%;
+}
+
+.total-price {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    background-color: var(--background-color-order-form);
+    border-radius: 20px;
+    margin-top: 15%;
+    color: var(--color-text-order-form);
+}
+
+.total-price .split-prices {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 100%;
+    height: 65%;
+    border-bottom: 1px solid var(--border-color-order-form);
+}
+
+.total-price .general-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 35%;
+    font-size: 36px;
+}
+
+.order-form-total-wrapper {
+    display: flex;
+    justify-content: space-around;
+    width: 850px;
+}
+
+.order-form-total .buy-button, .order-form-total .back-button {
+    background-color: #fff;
+    font-size: 24px;
+    outline: 0;
+    border-radius: 15px;
+    height: 51px;
+    width: 300px;
+    transition: 0.3s;
+}
+
+.order-form-total .buy-button {
+    border: 1px solid var(--background-button-find);
+}
+
+.order-form-total .buy-button:hover {
+    background-color: var(--background-button-find);
+    cursor: pointer;
+}
+
+.order-form-total .buy-button:active {
+    background-color: var(--background-button-find-active);
+}
+
+.order-form-total .back-button {
+    border: 1px solid var(--background-color-back);
+}
+
+.order-form-total .back-button:hover {
+    background-color: var(--background-color-back);
+    cursor: pointer;
+}
+
+.order-form-total .back-button:active {
+    background-color: var(--background-color-back-active);
+}
+
+label {
+	margin-bottom: 0;
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: var(--footer-text-color);
+    font-weight: bold;
+}

@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=game_store_net;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+}

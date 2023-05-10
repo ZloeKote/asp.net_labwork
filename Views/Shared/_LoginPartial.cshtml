@@ -1,0 +1,14 @@
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<LabWork.Data.Models.User> signInManager
+@if (signInManager.IsSignedIn(User))
+{
+    <span class="nav-menu-item"><a href="/UserOrders/List" class="nav-link">Замовлення</a></span>
+    <form id="logoutForm" method="POST" asp-action="Logoff" asp-controller="Account">
+        <span class="nav-menu-item exit nav-link">@User.Identity.Name</span>
+        <span class="nav-menu-item exit"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Вийти</a></span>
+    </form>
+
+} else
+{
+    <span class="nav-menu-item exit">@Html.ActionLink("Вхід", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link" })</span>
+    <span class="nav-menu-item exit">@Html.ActionLink("Реєстрація", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link" })</span>
+}

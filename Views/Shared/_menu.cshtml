@@ -1,0 +1,41 @@
+﻿@using LabWork.Models
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="~/css/style menu.css">
+    <script src="~/js/menu.js" defer></script>
+</head>
+<body>
+    <div>
+        <header class="header">
+            <nav class="nav-bar">
+                <div class="nav-bar-wrapper">
+                    <div class="nav-logo-wrapper">
+                        <a href="/Games/List" class="nav-link"><i class="nav-logo"></i></a>
+                        <div class="nav-and-basket">
+                            <span class="nav-title"><a href="/Games/List" class="nav-link">CatGames</a></span>
+                            <a href="/Basket/List" class="nav-link nav-link-counter"><span class="nav-basket-counter" style="display:none">1</span></a>
+                            <a href="/Basket/List" class="nav-link nav-link-basket"><i class="nav-basket"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="nav-search">
+                        <form action="" class="nav-form-search" action="/Games/List" method="POST">
+                            <input type="search" class="nav-form-text" placeholder="Знайти гру..." list = "games" autocomplete = "off">
+                            <button type="submit" class="nav-form-button"></button>
+                        </form>
+                    </div>
+
+                    <div class="nav-menu-wrapper">
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+    @RenderBody()
+    @RenderSection("scripts", required: false)
+</body>
+</html>
